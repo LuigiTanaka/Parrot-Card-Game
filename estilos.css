@@ -1,0 +1,74 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #EEF9BF;
+}
+
+h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 66px;
+    letter-spacing: -0.004em;
+    color: #75B79E;
+}
+
+.titulo {
+    height: 150px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.largura1 {
+    width: 260px;
+} 
+
+.largura2 {
+    width: 400px;
+}
+
+.largura3 {
+    width: 540px;
+}
+
+.largura4 {
+    width: 700px;
+}
+
+.largura5 {
+    width: 810px;
+}
+
+.largura6 {
+    width: 935px;
+}
+
+.container-cartas {
+    height: 316px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
+}
+
+.carta-virada {
+    width: 117px;
+    height: 146px;
+    background: #A7E9AF;
+    border: 1px solid #99CEA8;
+    box-sizing: border-box;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carta-virada img {
+    width: 100px;
+    height: 100px;
+}

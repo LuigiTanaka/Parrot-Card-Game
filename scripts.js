@@ -13,3 +13,5 @@ while (começar !== true) {
         começar = true;
     }
 }
+
+teste
