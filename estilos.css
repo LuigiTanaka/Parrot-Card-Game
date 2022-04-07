@@ -87,10 +87,10 @@ h1 {
     transform: rotateY(180deg);
 }
 
-.carta:active .verso {
+.vira-frente {
     transform: rotateY(0deg);
 }
 
-.carta:active .frente {
+.vira-verso {
     transform: rotateY(-180deg);
 }

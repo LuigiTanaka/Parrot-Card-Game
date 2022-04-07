@@ -38,11 +38,11 @@ let j = 0;
 let container = document.querySelector(".container-cartas");
 while (j < numeroDeCartas) {
     container.innerHTML += `
-        <div class="carta">
-            <div class="frente face">
+        <div class="carta" onclick="viraCarta(this)">
+            <div class="face frente">
                 <img src="images/front.png" />
             </div>
-            <div class="verso face">
+            <div class="face verso">
                 <img src="images/${cartas[j]}" />
             </div>
         </div>`
@@ -63,3 +63,15 @@ if (numeroDeCartas === 4) {
 } else if (numeroDeCartas === 14) {
     container.classList.add("largura6");
 }
+
+
+//vira a carta
+function viraCarta(cartaSelecionada) {
+    let frente = cartaSelecionada.querySelector(".frente");
+    let verso = cartaSelecionada.querySelector(".verso");
+
+    verso.classList.add("vira-frente");
+    frente.classList.add("vira-verso");
+}
+
+
