@@ -56,19 +56,41 @@ h1 {
     align-content: space-between;
 }
 
-.carta-virada {
+.carta {
     width: 117px;
     height: 146px;
+    position: relative;
+}
+
+.carta img {
+    width: 100px;
+    height: 100px;
+}
+
+.face {
+    width: 100%;
+    height: 100%;
     background: #A7E9AF;
     border: 1px solid #99CEA8;
-    box-sizing: border-box;
     border-radius: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+    position: absolute;
+    backface-visibility: hidden;
+    transition: all 1s;
+    transform-style: preserve-3d;
 }
 
-.carta-virada img {
-    width: 100px;
-    height: 100px;
+.verso {
+    transform: rotateY(180deg);
+}
+
+.carta:active .verso {
+    transform: rotateY(0deg);
+}
+
+.carta:active .frente {
+    transform: rotateY(-180deg);
 }
