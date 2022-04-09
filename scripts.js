@@ -31,7 +31,7 @@ function criaCartas() {
     let i = 0;
     while (i < n) {
         cartas.push({conteudo: `
-                <div class="carta" onclick="viraCarta(this)">
+                <div class="carta nao-encontrada" onclick="viraCarta(this)">
                     <div class="face frente">
                         <img src="images/front.png" />
                     </div>
@@ -41,7 +41,7 @@ function criaCartas() {
                 </div>`});
 
         cartas.push({conteudo: `
-                <div class="carta" onclick="viraCarta(this)">
+                <div class="carta nao-encontrada" onclick="viraCarta(this)">
                     <div class="face frente">
                         <img src="images/front.png" />
                     </div>
@@ -53,12 +53,10 @@ function criaCartas() {
     }
 }
 
-//embaralha as cartas
-cartas.sort(comparador);
-
-//adiciona as cartas viradas
+//embaralha e adiciona as cartas viradas
 let container;
 function adicionaCartas() {
+    cartas.sort(comparador);
     let j = 0;
     container = document.querySelector(".container-cartas");
     while (j < numeroDeCartas) {
@@ -84,22 +82,29 @@ function defineLargura () {
     }
 }
 
-
 //vira carta
 let cartasSelecionadasNaRodada = [];
+let contagemJogadas = 0;
 function viraCarta(cartaSelecionada) {
-    let frente = cartaSelecionada.querySelector(".frente");
-    let verso = cartaSelecionada.querySelector(".verso");
-    verso.classList.add("vira-frente");
-    frente.classList.add("vira-verso");
+    if (cartaSelecionada.classList.contains("nao-encontrada")) {
+        let frente = cartaSelecionada.querySelector(".frente");
+        let verso = cartaSelecionada.querySelector(".verso");
+        verso.classList.add("vira-frente");
+        frente.classList.add("vira-verso");
 
-    cartasSelecionadasNaRodada.push(cartaSelecionada);
-    if (cartasSelecionadasNaRodada.length === 2) {
-        if (cartasSelecionadasNaRodada[0].innerHTML !== cartasSelecionadasNaRodada[1].innerHTML) {
-            setTimeout(desviraCartas, 1000);
-        } else {
-            cartasSelecionadasNaRodada = [];
+        cartasSelecionadasNaRodada.push(cartaSelecionada);
+        if (cartasSelecionadasNaRodada.length === 2) {
+            if (cartasSelecionadasNaRodada[0].innerHTML !== cartasSelecionadasNaRodada[1].innerHTML) {
+                setTimeout(desviraCartas, 1000);
+            } else {
+                cartasSelecionadasNaRodada[0].classList.remove("nao-encontrada");
+                cartasSelecionadasNaRodada[1].classList.remove("nao-encontrada");
+                cartasSelecionadasNaRodada = [];
+            }
         }
+
+        contagemJogadas++;
+        setTimeout(fimDeJogo, 200);
     }
 }
 
@@ -115,6 +120,13 @@ function desviraCartas() {
     verso2.classList.remove("vira-frente");
     frente2.classList.remove("vira-verso");
     cartasSelecionadasNaRodada = [];
+}
+
+function fimDeJogo() {
+    let cartasNaoEncontradas = document.querySelectorAll(".nao-encontrada");
+    if (cartasNaoEncontradas.length === 0) {
+        alert(`Você ganhou em ${contagemJogadas} jogadas!`)
+    }
 }
 
 
