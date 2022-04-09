@@ -87,24 +87,26 @@ let cartasSelecionadasNaRodada = [];
 let contagemJogadas = 0;
 function viraCarta(cartaSelecionada) {
     if (cartaSelecionada.classList.contains("nao-encontrada")) {
-        let frente = cartaSelecionada.querySelector(".frente");
-        let verso = cartaSelecionada.querySelector(".verso");
-        verso.classList.add("vira-frente");
-        frente.classList.add("vira-verso");
+        if(cartasSelecionadasNaRodada.length < 2) {
+            let frente = cartaSelecionada.querySelector(".frente");
+            let verso = cartaSelecionada.querySelector(".verso");
+            verso.classList.add("vira-frente");
+            frente.classList.add("vira-verso");
 
-        cartasSelecionadasNaRodada.push(cartaSelecionada);
-        if (cartasSelecionadasNaRodada.length === 2) {
-            if (cartasSelecionadasNaRodada[0].innerHTML !== cartasSelecionadasNaRodada[1].innerHTML) {
-                setTimeout(desviraCartas, 1000);
-            } else {
-                cartasSelecionadasNaRodada[0].classList.remove("nao-encontrada");
-                cartasSelecionadasNaRodada[1].classList.remove("nao-encontrada");
-                cartasSelecionadasNaRodada = [];
+            cartasSelecionadasNaRodada.push(cartaSelecionada);
+            if (cartasSelecionadasNaRodada.length === 2) {
+                if (cartasSelecionadasNaRodada[0].innerHTML !== cartasSelecionadasNaRodada[1].innerHTML) {
+                    setTimeout(desviraCartas, 1000);
+                } else {
+                    cartasSelecionadasNaRodada[0].classList.remove("nao-encontrada");
+                    cartasSelecionadasNaRodada[1].classList.remove("nao-encontrada");
+                    cartasSelecionadasNaRodada = [];
+                }
             }
-        }
 
-        contagemJogadas++;
-        setTimeout(fimDeJogo, 200);
+            contagemJogadas++;
+            setTimeout(fimDeJogo, 200);
+        }
     }
 }
 

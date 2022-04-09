@@ -15,6 +15,20 @@ h1 {
     color: #75B79E;
 }
 
+h2 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 42px;
+    letter-spacing: -0.004em;
+    color: #75B79E;
+    text-align: center;
+}
+
+.titulo-mobile {
+    display: none;
+}
+
 .titulo {
     height: 150px;
     width: 100%;
@@ -93,4 +107,26 @@ h1 {
 
 .vira-verso {
     transform: rotateY(-180deg);
+}
+
+@media (max-width: 420px) {
+    .largura1, .largura2, .largura3, .largura4, .largura5, .largura6 {
+        width: 120px;
+    }
+
+    .carta {
+        margin-bottom: 34px;
+    }
+
+    .titulo {
+        display: none;
+    }
+
+    .titulo-mobile {
+        height: 150px;
+        width: 100%;
+        display: block;
+        padding-top: 40px;
+    }
+
 }
