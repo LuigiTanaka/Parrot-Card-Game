@@ -68,6 +68,7 @@ h2 {
     flex-wrap: wrap;
     justify-content: space-between;
     align-content: space-between;
+    margin-bottom: 50px;
 }
 
 .carta {

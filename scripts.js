@@ -19,6 +19,8 @@ function verificaNumeroDeCartas() {
             começar = true;
         }
     }
+
+    criaCartas();
 }
     
 
@@ -51,6 +53,8 @@ function criaCartas() {
                 </div>`});
         i++
     }
+
+    adicionaCartas();
 }
 
 //embaralha e adiciona as cartas viradas
@@ -63,6 +67,8 @@ function adicionaCartas() {
         container.innerHTML += cartas[j].conteudo;
         j++;
     }
+
+    defineLargura();
 }
 
 //estabelece a largura adequada do container de acordo com o numero de cartas
@@ -128,11 +134,34 @@ function fimDeJogo() {
     let cartasNaoEncontradas = document.querySelectorAll(".nao-encontrada");
     if (cartasNaoEncontradas.length === 0) {
         alert(`Você ganhou em ${contagemJogadas} jogadas!`)
+        let reiniciar = prompt("Você gostaria de jogar novamente?");
+        if (reiniciar === "sim") {
+            reiniciarJogo();
+        }
     }
+}
+
+function reiniciarJogo() {
+    cartas = [];
+    contagemJogadas = 0;
+    container.innerHTML = "";
+
+    if (numeroDeCartas === 4) {
+        container.classList.remove("largura1");
+    } else if (numeroDeCartas === 6) {
+        container.classList.remove("largura2");
+    } else if (numeroDeCartas === 8) {
+        container.classList.remove("largura3");
+    } else if (numeroDeCartas === 10) {
+        container.classList.remove("largura4");
+    } else if (numeroDeCartas === 12) {
+        container.classList.remove("largura5");
+    } else if (numeroDeCartas === 14) {
+        container.classList.remove("largura6");
+    }
+
+    verificaNumeroDeCartas();
 }
 
 
 verificaNumeroDeCartas();
-criaCartas();
-adicionaCartas();
-defineLargura();
